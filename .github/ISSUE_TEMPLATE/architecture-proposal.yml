@@ -1,0 +1,102 @@
+name: Architecture Proposal
+
+description: Propose an LLM architecture modification for review and experimental validation.
+
+title: "[ARCH-PROP] "
+
+labels:
+  - "architecture proposal"
+  - "review:pending"
+
+assignees:
+  - "JT-Ushio"
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit one architecture modification per proposal.
+
+        The proposal must identify an immutable parent commit and provide
+        a reproducible experimental validation plan.
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: |
+        Explain the limitation of the parent architecture, the research
+        hypothesis, and why the proposed modification may be effective.
+      placeholder: |
+        Current limitation:
+
+        Research hypothesis:
+
+        Rationale:
+    validations:
+      required: true
+
+  - type: input
+    id: parent_commit
+    attributes:
+      label: Parent Commit
+      description: |
+        Provide the exact Git commit SHA corresponding to the parent
+        architecture. Do not use a moving branch name such as main or dev.
+      placeholder: "Example: 4f3c21a8d7e6..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_modification
+    attributes:
+      label: Proposed Modification
+      description: |
+        Describe the architectural changes relative to the parent commit.
+        Focus on the architectural delta rather than general code changes.
+      placeholder: |
+        Components changed:
+
+        Proposed architecture:
+
+        Differences from the parent architecture:
+
+        Expected effect on parameters, compute, memory, or latency:
+    validations:
+      required: true
+
+  - type: textarea
+    id: experiment_plan
+    attributes:
+      label: Experiment Plan
+      description: |
+        Explain how the proposed modification will be implemented,
+        trained, evaluated, and compared with the parent architecture.
+      placeholder: |
+        Baseline:
+
+        Model scale:
+
+        Training data and token budget:
+
+        Training configuration:
+
+        Evaluation datasets and metrics:
+
+        Compute budget:
+
+        Acceptance criteria:
+
+        Rejection criteria:
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Reviewer Decision
+
+        The reviewer decision is maintained by repository maintainers
+        through `review:*` labels and a structured reviewer comment.
+
+        Proposal authors should not approve their own proposals.
