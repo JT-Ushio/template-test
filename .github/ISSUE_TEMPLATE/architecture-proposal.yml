@@ -32,16 +32,19 @@ body:
     id: motivation
     attributes:
       label: Motivation
-      description: Describe the current limitation, your hypothesis, and the reasoning behind it.
-      placeholder: |
-        Current limitation
-        Describe the problem in the parent architecture and include supporting evidence where possible.
+      description: Complete each section below. Guidance in comments will be hidden after submission.
+      value: |
+        **Current limitation**
 
-        Research hypothesis
-        State the expected outcome in a way that can be tested.
+        <!-- Describe the problem in the parent architecture and include supporting evidence where possible. -->
 
-        Rationale
-        Explain why this modification is likely to produce that outcome.
+        **Research hypothesis**
+
+        <!-- State the expected outcome in a way that can be tested. -->
+
+        **Rationale**
+
+        <!-- Explain why this modification is likely to produce that outcome. -->
     validations:
       required: true
 
@@ -49,16 +52,19 @@ body:
     id: evidence_and_references
     attributes:
       label: Evidence and references
-      description: Link any papers, experiments, implementations, or internal results that support the proposal.
-      placeholder: |
-        Papers or technical reports
-        - Title — URL
+      description: Add any supporting sources that are available. Delete unused sections if needed.
+      value: |
+        **Papers or technical reports**
 
-        Relevant implementations
-        - Repository or code link
+        <!-- Add links as a list: - [Title](URL) -->
 
-        Experimental evidence
-        - Benchmark result, ablation, or analysis
+        **Relevant implementations**
+
+        <!-- Link relevant repositories, pull requests, or code. -->
+
+        **Experimental evidence**
+
+        <!-- Summarize relevant benchmark results, ablations, or internal analyses. -->
     validations:
       required: false
 
@@ -80,19 +86,23 @@ body:
     id: proposed_modification
     attributes:
       label: Proposed modification
-      description: Describe the architecture delta from the parent commit. Focus on design changes, not general implementation details.
-      placeholder: |
-        Components affected
-        List the modules or layers that will change.
+      description: Complete each section below. Focus on the architecture delta from the parent commit.
+      value: |
+        **Components affected**
 
-        Proposed architecture
-        Describe the new structure or behavior. Add a diagram if it makes the change easier to understand.
+        <!-- List the modules or layers that will change. -->
 
-        Key differences
-        Summarize what is added, removed, or replaced.
+        **Proposed architecture**
 
-        Expected resource impact
-        Estimate changes to parameter count, compute, memory usage, and latency.
+        <!-- Describe the new structure or behavior. Add a diagram if it makes the change easier to understand. -->
+
+        **Key differences**
+
+        <!-- Summarize what is added, removed, or replaced. -->
+
+        **Expected resource impact**
+
+        <!-- Estimate changes to parameter count, compute, memory usage, and latency. -->
     validations:
       required: true
 
@@ -105,31 +115,39 @@ body:
     id: experiment_plan
     attributes:
       label: Experiment plan
-      description: Define a reproducible comparison between the proposal and the parent architecture.
-      placeholder: |
-        Baseline
-        Identify the baseline configuration and commit.
+      description: Complete each section to define a reproducible comparison with the parent architecture.
+      value: |
+        **Baseline**
 
-        Model scale
-        Specify model size and any scaling assumptions.
+        <!-- Identify the baseline configuration and commit. -->
 
-        Training data and token budget
-        Describe datasets, sampling, preprocessing, and total tokens.
+        **Model scale**
 
-        Training configuration
-        List the relevant hyperparameters and training setup.
+        <!-- Specify model size and any scaling assumptions. -->
 
-        Evaluation datasets and metrics
-        Define what will be measured and how.
+        **Training data and token budget**
 
-        Compute budget
-        Estimate hardware, runtime, and total compute.
+        <!-- Describe datasets, sampling, preprocessing, and total tokens. -->
 
-        Acceptance criteria
-        State the measurable result required to accept the proposal.
+        **Training configuration**
 
-        Rejection criteria
-        State the result or trade-off that would cause the proposal to be rejected.
+        <!-- List the relevant hyperparameters and training setup. -->
+
+        **Evaluation datasets and metrics**
+
+        <!-- Define what will be measured and how. -->
+
+        **Compute budget**
+
+        <!-- Estimate hardware, runtime, and total compute. -->
+
+        **Acceptance criteria**
+
+        <!-- State the measurable result required to accept the proposal. -->
+
+        **Rejection criteria**
+
+        <!-- State the result or trade-off that would cause the proposal to be rejected. -->
     validations:
       required: true
 
