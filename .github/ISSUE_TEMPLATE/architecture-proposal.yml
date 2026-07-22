@@ -26,27 +26,47 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## 1. Why should we make this change?
+        ## 1. Basic information
 
-  - type: textarea
-    id: motivation
+  - type: input
+    id: architecture_id
     attributes:
-      label: Motivation
-      description: Complete each section below. Guidance in comments will be hidden after submission.
-      value: |
-        **Current limitation**
+      label: Architecture ID
+      description: Enter the stable architecture identifier, or leave this blank if an ID has not been assigned yet.
+      placeholder: "Example: olmo3-7b-base"
+    validations:
+      required: false
 
-        <!-- Describe the problem in the parent architecture and include supporting evidence where possible. -->
-
-        **Research hypothesis**
-
-        <!-- State the expected outcome in a way that can be tested. -->
-
-        **Rationale**
-
-        <!-- Explain why this modification is likely to produce that outcome. -->
+  - type: dropdown
+    id: proposal_type
+    attributes:
+      label: Proposal type
+      description: Select whether this proposal registers a root architecture or modifies an existing architecture.
+      options:
+        - Root architecture
+        - Architecture modification
     validations:
       required: true
+
+  - type: input
+    id: parent_commit
+    attributes:
+      label: Parent commit
+      description: Enter the full Git commit SHA for the parent architecture. For a root architecture, enter `N/A — root architecture`.
+      placeholder: "Example: 4f3c21a8d7e6c5b4a39281706f5e4d3c2b1a0987"
+    validations:
+      required: true
+
+  - type: textarea
+    id: related_issues_and_prs
+    attributes:
+      label: Related issues and pull requests
+      description: Link any related Issues or pull requests. Leave this blank if there are none.
+      placeholder: |
+        - #123
+        - https://github.com/owner/repository/pull/456
+    validations:
+      required: false
 
   - type: textarea
     id: evidence_and_references
@@ -71,16 +91,32 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## 2. What will change?
+        ## 2. Why should we make this change?
 
-  - type: input
-    id: parent_commit
+  - type: textarea
+    id: motivation
     attributes:
-      label: Parent commit
-      description: Enter the full Git commit SHA for the parent architecture. Do not use a moving branch such as `main` or `dev`.
-      placeholder: "Example: 4f3c21a8d7e6c5b4a39281706f5e4d3c2b1a0987"
+      label: Motivation
+      description: Complete each section below. Guidance in comments will be hidden after submission.
+      value: |
+        **Current limitation**
+
+        <!-- Describe the problem in the parent architecture and include supporting evidence where possible. -->
+
+        **Research hypothesis**
+
+        <!-- State the expected outcome in a way that can be tested. -->
+
+        **Rationale**
+
+        <!-- Explain why this modification is likely to produce that outcome. -->
     validations:
       required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 3. What will change?
 
   - type: textarea
     id: proposed_modification
@@ -109,7 +145,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## 3. How will we validate it?
+        ## 4. How will we validate it?
 
   - type: textarea
     id: experiment_plan
