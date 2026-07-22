@@ -1,13 +1,9 @@
-name: Architecture Proposal
-
-description: Propose an LLM architecture modification for review and experimental validation.
-
+name: Architecture proposal
+description: Propose and validate one change to the LLM architecture.
 title: "[ARCH-PROP] "
-
 labels:
   - "architecture proposal"
   - "review:pending"
-
 assignees:
   - "JT-Ushio"
 
@@ -15,88 +11,135 @@ body:
   - type: markdown
     attributes:
       value: |
-        Submit one architecture modification per proposal.
+        # Architecture proposal
 
-        The proposal must identify an immutable parent commit and provide
-        a reproducible experimental validation plan.
+        Use this form to propose **one architecture change** and define how it will be validated.
+
+        Before submitting, make sure you have:
+
+        - identified the exact parent commit;
+        - described the change relative to that commit; and
+        - provided a reproducible experiment plan with clear success criteria.
+
+        > Keep each proposal focused. Submit unrelated architecture changes separately.
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 1. Why should we make this change?
 
   - type: textarea
     id: motivation
     attributes:
       label: Motivation
-      description: |
-        Explain the limitation of the parent architecture, the research
-        hypothesis, and why the proposed modification may be effective.
+      description: Describe the current limitation, your hypothesis, and the reasoning behind it.
       placeholder: |
-        Current limitation:
+        Current limitation
+        Describe the problem in the parent architecture and include supporting evidence where possible.
 
-        Research hypothesis:
+        Research hypothesis
+        State the expected outcome in a way that can be tested.
 
-        Rationale:
+        Rationale
+        Explain why this modification is likely to produce that outcome.
     validations:
       required: true
+
+  - type: textarea
+    id: evidence_and_references
+    attributes:
+      label: Evidence and references
+      description: Link any papers, experiments, implementations, or internal results that support the proposal.
+      placeholder: |
+        Papers or technical reports
+        - Title — URL
+
+        Relevant implementations
+        - Repository or code link
+
+        Experimental evidence
+        - Benchmark result, ablation, or analysis
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 2. What will change?
 
   - type: input
     id: parent_commit
     attributes:
-      label: Parent Commit
-      description: |
-        Provide the exact Git commit SHA corresponding to the parent
-        architecture. Do not use a moving branch name such as main or dev.
-      placeholder: "Example: 4f3c21a8d7e6..."
+      label: Parent commit
+      description: Enter the full Git commit SHA for the parent architecture. Do not use a moving branch such as `main` or `dev`.
+      placeholder: "Example: 4f3c21a8d7e6c5b4a39281706f5e4d3c2b1a0987"
     validations:
       required: true
 
   - type: textarea
     id: proposed_modification
     attributes:
-      label: Proposed Modification
-      description: |
-        Describe the architectural changes relative to the parent commit.
-        Focus on the architectural delta rather than general code changes.
+      label: Proposed modification
+      description: Describe the architecture delta from the parent commit. Focus on design changes, not general implementation details.
       placeholder: |
-        Components changed:
+        Components affected
+        List the modules or layers that will change.
 
-        Proposed architecture:
+        Proposed architecture
+        Describe the new structure or behavior. Add a diagram if it makes the change easier to understand.
 
-        Differences from the parent architecture:
+        Key differences
+        Summarize what is added, removed, or replaced.
 
-        Expected effect on parameters, compute, memory, or latency:
-    validations:
-      required: true
-
-  - type: textarea
-    id: experiment_plan
-    attributes:
-      label: Experiment Plan
-      description: |
-        Explain how the proposed modification will be implemented,
-        trained, evaluated, and compared with the parent architecture.
-      placeholder: |
-        Baseline:
-
-        Model scale:
-
-        Training data and token budget:
-
-        Training configuration:
-
-        Evaluation datasets and metrics:
-
-        Compute budget:
-
-        Acceptance criteria:
-
-        Rejection criteria:
+        Expected resource impact
+        Estimate changes to parameter count, compute, memory usage, and latency.
     validations:
       required: true
 
   - type: markdown
     attributes:
       value: |
-        ## Reviewer Decision
+        ## 3. How will we validate it?
 
-        The reviewer decision is maintained by repository maintainers
-        through `review:*` labels and a structured reviewer comment.
+  - type: textarea
+    id: experiment_plan
+    attributes:
+      label: Experiment plan
+      description: Define a reproducible comparison between the proposal and the parent architecture.
+      placeholder: |
+        Baseline
+        Identify the baseline configuration and commit.
 
-        Proposal authors should not approve their own proposals.
+        Model scale
+        Specify model size and any scaling assumptions.
+
+        Training data and token budget
+        Describe datasets, sampling, preprocessing, and total tokens.
+
+        Training configuration
+        List the relevant hyperparameters and training setup.
+
+        Evaluation datasets and metrics
+        Define what will be measured and how.
+
+        Compute budget
+        Estimate hardware, runtime, and total compute.
+
+        Acceptance criteria
+        State the measurable result required to accept the proposal.
+
+        Rejection criteria
+        State the result or trade-off that would cause the proposal to be rejected.
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+        ## What happens next?
+
+        Repository maintainers record the decision using a `review:*` label and a structured reviewer comment.
+
+        Proposal authors must not approve their own proposals.
