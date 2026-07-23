@@ -10,15 +10,15 @@ body:
 
         Use this form to propose one architecture change. Keep the proposal focused and submit unrelated changes separately.
 
-  - type: dropdown
-    id: proposal_type
-    attributes:
-      label: Proposal type
-      options:
-        - Root architecture
-        - Modification to an existing architecture
-    validations:
-      required: true
+  # - type: dropdown
+  #   id: proposal_type
+  #   attributes:
+  #     label: Proposal type
+  #     options:
+  #       - Root architecture
+  #       - Modification to an existing architecture
+  #   validations:
+  #     required: true
 
   - type: input
     id: proposal_name
