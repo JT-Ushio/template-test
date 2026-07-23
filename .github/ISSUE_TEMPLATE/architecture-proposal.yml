@@ -1,11 +1,6 @@
 name: 🏗️ Architecture proposal
 description: Propose and validate one change to the LLM architecture.
 title: "[ARCH-PROP] "
-labels:
-  - "architecture proposal"
-  - "review:pending"
-assignees:
-  - "JT-Ushio"
 
 body:
   - type: markdown
@@ -33,9 +28,9 @@ body:
   - type: input
     id: proposal_name
     attributes:
-      label: Architecture or modification name
+      label: Architecture Name
       description: Give the proposed base architecture or modification a short, descriptive name.
-      placeholder: "Example: OLMo 3 7B Base or Sliding-window attention"
+      placeholder: "Example: OLMo3"
     validations:
       required: true
 
@@ -62,12 +57,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Problem and expected outcome
+        ## Motivation
 
   - type: textarea
     id: problem_and_hypothesis
     attributes:
-      label: Problem and outcome details
       description: Describe the current limitation or opportunity, the measurable outcome you expect, and any supporting rationale or evidence.
       placeholder: Explain the problem and the expected outcome.
     validations:
@@ -76,12 +70,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Proposed change
+        ## Proposed Architecture
 
   - type: textarea
     id: proposed_change
     attributes:
-      label: Change details
       description: Describe what changes from the base architecture, what remains unchanged, and the expected impact on parameters, compute, memory, or latency if known.
       placeholder: Explain the proposed architecture change.
     validations:
@@ -90,12 +83,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Validation plan
+        ## Experiment plan
 
   - type: textarea
     id: validation_plan
     attributes:
-      label: Evaluation details
       description: Identify the baseline, evaluation method and metrics, measurable success criteria, and any notable compute or data requirements.
       placeholder: Explain how the proposal will be evaluated.
     validations:
