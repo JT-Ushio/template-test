@@ -40,11 +40,11 @@ body:
       required: true
 
   - type: input
-    id: base_architecture
+    id: base_architecture_issue
     attributes:
-      label: Base architecture
-      description: For a modification, provide the architecture ID, model name, or commit SHA. Leave blank for a root architecture.
-      placeholder: "Example: olmo3-7b-base at 4f3c21a"
+      label: Base architecture issue
+      description: For a modification, link the issue that tracks the base architecture. Leave blank for a root architecture.
+      placeholder: "Example: #123 or https://github.com/owner/repository/issues/123"
     validations:
       required: false
 
@@ -59,28 +59,43 @@ body:
     validations:
       required: false
 
+  - type: markdown
+    attributes:
+      value: |
+        ## Problem and expected outcome
+
   - type: textarea
     id: problem_and_hypothesis
     attributes:
-      label: Problem and expected outcome
+      label: Problem and outcome details
       description: Describe the current limitation or opportunity, the measurable outcome you expect, and any supporting rationale or evidence.
       placeholder: Explain the problem and the expected outcome.
     validations:
       required: true
 
+  - type: markdown
+    attributes:
+      value: |
+        ## Proposed change
+
   - type: textarea
     id: proposed_change
     attributes:
-      label: Proposed change
+      label: Change details
       description: Describe what changes from the base architecture, what remains unchanged, and the expected impact on parameters, compute, memory, or latency if known.
       placeholder: Explain the proposed architecture change.
     validations:
       required: true
 
+  - type: markdown
+    attributes:
+      value: |
+        ## Validation plan
+
   - type: textarea
     id: validation_plan
     attributes:
-      label: Validation plan
+      label: Evaluation details
       description: Identify the baseline, evaluation method and metrics, measurable success criteria, and any notable compute or data requirements.
       placeholder: Explain how the proposal will be evaluated.
     validations:
