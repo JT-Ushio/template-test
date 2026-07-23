@@ -1,6 +1,11 @@
 name: 🏗️ Architecture proposal
 description: Propose and validate one change to the LLM architecture.
 title: "[ARCH-PROP] "
+labels:
+  - "architecture proposal"
+  - "review:pending"
+assignees:
+  - "JT-Ushio"
 
 body:
   - type: markdown
@@ -9,11 +14,6 @@ body:
         # Architecture proposal
 
         Use this form to propose one architecture change. Keep the proposal focused and submit unrelated changes separately.
-
-  - type: markdown
-    attributes:
-      value: |
-        ## Basic information
 
   - type: dropdown
     id: proposal_type
@@ -37,7 +37,7 @@ body:
   - type: input
     id: base_architecture_issue
     attributes:
-      label: Base architecture issue
+      label: Parent issue
       description: For a modification, link the issue that tracks the base architecture. Leave blank for a root architecture.
       placeholder: "Example: #123 or https://github.com/owner/repository/issues/123"
     validations:
@@ -54,40 +54,28 @@ body:
     validations:
       required: false
 
-  - type: markdown
-    attributes:
-      value: |
-        ## Motivation
-
   - type: textarea
     id: problem_and_hypothesis
     attributes:
+      label: Motivations
       description: Describe the current limitation or opportunity, the measurable outcome you expect, and any supporting rationale or evidence.
       placeholder: Explain the problem and the expected outcome.
     validations:
       required: true
 
-  - type: markdown
-    attributes:
-      value: |
-        ## Proposed Architecture
-
   - type: textarea
     id: proposed_change
     attributes:
+      label: Proposed Architecture
       description: Describe what changes from the base architecture, what remains unchanged, and the expected impact on parameters, compute, memory, or latency if known.
       placeholder: Explain the proposed architecture change.
     validations:
       required: true
 
-  - type: markdown
-    attributes:
-      value: |
-        ## Experiment plan
-
   - type: textarea
     id: validation_plan
     attributes:
+      label: Experiments Plan
       description: Identify the baseline, evaluation method and metrics, measurable success criteria, and any notable compute or data requirements.
       placeholder: Explain how the proposal will be evaluated.
     validations:
