@@ -63,15 +63,8 @@ body:
     id: problem_and_hypothesis
     attributes:
       label: Problem and expected outcome
-      description: What limitation are you addressing, and what measurable improvement do you expect?
-      value: |
-        **Problem**
-
-        <!-- Describe the limitation or opportunity. -->
-
-        **Expected outcome**
-
-        <!-- State the expected result in a way that can be tested. -->
+      description: Describe the current limitation or opportunity, the measurable outcome you expect, and any supporting rationale or evidence.
+      placeholder: Explain the problem and the expected outcome.
     validations:
       required: true
 
@@ -79,19 +72,8 @@ body:
     id: proposed_change
     attributes:
       label: Proposed change
-      description: Describe the architecture delta from the base architecture.
-      value: |
-        **What changes**
-
-        <!-- Describe the proposed structure or behavior. -->
-
-        **What remains unchanged**
-
-        <!-- Identify important parts of the base architecture that are unaffected. -->
-
-        **Expected resource impact, if known**
-
-        <!-- Note expected changes to parameters, compute, memory, or latency. -->
+      description: Describe what changes from the base architecture, what remains unchanged, and the expected impact on parameters, compute, memory, or latency if known.
+      placeholder: Explain the proposed architecture change.
     validations:
       required: true
 
@@ -99,23 +81,8 @@ body:
     id: validation_plan
     attributes:
       label: Validation plan
-      description: Explain how the proposal will be compared and judged.
-      value: |
-        **Baseline**
-
-        <!-- Identify the comparison architecture or configuration. -->
-
-        **Evaluation and metrics**
-
-        <!-- Describe what will be measured and how. -->
-
-        **Success criteria**
-
-        <!-- State the measurable result required to accept the proposal. -->
-
-        **Compute or data requirements, if known**
-
-        <!-- Summarize any notable experimental requirements. -->
+      description: Identify the baseline, evaluation method and metrics, measurable success criteria, and any notable compute or data requirements.
+      placeholder: Explain how the proposal will be evaluated.
     validations:
       required: true
 
