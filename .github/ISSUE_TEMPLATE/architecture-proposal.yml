@@ -1,11 +1,6 @@
 name: 🏗️ Architecture proposal
 description: Propose and validate one change to the LLM architecture.
 title: "[ARCH-PROP] "
-labels:
-  - "architecture proposal"
-  - "review:pending"
-assignees:
-  - "JT-Ushio"
 
 body:
   - type: markdown
@@ -39,7 +34,7 @@ body:
     attributes:
       label: Parent issue
       description: For a modification, link the issue that tracks the base architecture. Leave blank for a root architecture.
-      placeholder: "Example: #123 or https://github.com/owner/repository/issues/123"
+      placeholder: "Example: #123"
     validations:
       required: false
 
