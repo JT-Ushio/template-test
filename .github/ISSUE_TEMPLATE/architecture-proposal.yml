@@ -13,177 +13,109 @@ body:
       value: |
         # Architecture proposal
 
-        Use this form to propose **one architecture change** and define how it will be validated.
-
-        Before submitting, make sure you have:
-
-        - identified the exact parent commit;
-        - described the change relative to that commit; and
-        - provided a reproducible experiment plan with clear success criteria.
-
-        > Keep each proposal focused. Submit unrelated architecture changes separately.
+        Use this form to propose one architecture change. Keep the proposal focused and submit unrelated changes separately.
 
   - type: markdown
     attributes:
       value: |
-        ## 1. Basic information
-
-  - type: input
-    id: architecture_id
-    attributes:
-      label: Architecture ID
-      description: Enter the stable architecture identifier, or leave this blank if an ID has not been assigned yet.
-      placeholder: "Example: olmo3-7b-base"
-    validations:
-      required: false
+        ## Basic information
 
   - type: dropdown
     id: proposal_type
     attributes:
       label: Proposal type
-      description: Select whether this proposal registers a root architecture or modifies an existing architecture.
       options:
         - Root architecture
-        - Architecture modification
+        - Modification to an existing architecture
     validations:
       required: true
 
   - type: input
-    id: parent_commit
+    id: proposal_name
     attributes:
-      label: Parent commit
-      description: Enter the full Git commit SHA for the parent architecture. For a root architecture, enter `N/A — root architecture`.
-      placeholder: "Example: 4f3c21a8d7e6c5b4a39281706f5e4d3c2b1a0987"
+      label: Architecture or modification name
+      description: Give the proposed base architecture or modification a short, descriptive name.
+      placeholder: "Example: OLMo 3 7B Base or Sliding-window attention"
     validations:
       required: true
 
-  - type: textarea
-    id: related_issues_and_prs
+  - type: input
+    id: base_architecture
     attributes:
-      label: Related issues and pull requests
-      description: Link any related Issues or pull requests. Leave this blank if there are none.
+      label: Base architecture
+      description: For a modification, provide the architecture ID, model name, or commit SHA. Leave blank for a root architecture.
+      placeholder: "Example: olmo3-7b-base at 4f3c21a"
+    validations:
+      required: false
+
+  - type: textarea
+    id: related_work
+    attributes:
+      label: Related work
+      description: Optionally link related issues, pull requests, papers, experiments, or implementations.
       placeholder: |
         - #123
-        - https://github.com/owner/repository/pull/456
+        - [Relevant paper](https://...)
     validations:
       required: false
 
   - type: textarea
-    id: evidence_and_references
+    id: problem_and_hypothesis
     attributes:
-      label: Evidence and references
-      description: Add any supporting sources that are available. Delete unused sections if needed.
+      label: Problem and expected outcome
+      description: What limitation are you addressing, and what measurable improvement do you expect?
       value: |
-        **Papers or technical reports**
+        **Problem**
 
-        <!-- Add links as a list: - [Title](URL) -->
+        <!-- Describe the limitation or opportunity. -->
 
-        **Relevant implementations**
+        **Expected outcome**
 
-        <!-- Link relevant repositories, pull requests, or code. -->
-
-        **Experimental evidence**
-
-        <!-- Summarize relevant benchmark results, ablations, or internal analyses. -->
-    validations:
-      required: false
-
-  - type: markdown
-    attributes:
-      value: |
-        ## 2. Why should we make this change?
-
-  - type: textarea
-    id: motivation
-    attributes:
-      label: Motivation
-      description: Complete each section below. Guidance in comments will be hidden after submission.
-      value: |
-        **Current limitation**
-
-        <!-- Describe the problem in the parent architecture and include supporting evidence where possible. -->
-
-        **Research hypothesis**
-
-        <!-- State the expected outcome in a way that can be tested. -->
-
-        **Rationale**
-
-        <!-- Explain why this modification is likely to produce that outcome. -->
+        <!-- State the expected result in a way that can be tested. -->
     validations:
       required: true
 
-  - type: markdown
-    attributes:
-      value: |
-        ## 3. What will change?
-
   - type: textarea
-    id: proposed_modification
+    id: proposed_change
     attributes:
-      label: Proposed modification
-      description: Complete each section below. Focus on the architecture delta from the parent commit.
+      label: Proposed change
+      description: Describe the architecture delta from the base architecture.
       value: |
-        **Components affected**
+        **What changes**
 
-        <!-- List the modules or layers that will change. -->
+        <!-- Describe the proposed structure or behavior. -->
 
-        **Proposed architecture**
+        **What remains unchanged**
 
-        <!-- Describe the new structure or behavior. Add a diagram if it makes the change easier to understand. -->
+        <!-- Identify important parts of the base architecture that are unaffected. -->
 
-        **Key differences**
+        **Expected resource impact, if known**
 
-        <!-- Summarize what is added, removed, or replaced. -->
-
-        **Expected resource impact**
-
-        <!-- Estimate changes to parameter count, compute, memory usage, and latency. -->
+        <!-- Note expected changes to parameters, compute, memory, or latency. -->
     validations:
       required: true
 
-  - type: markdown
-    attributes:
-      value: |
-        ## 4. How will we validate it?
-
   - type: textarea
-    id: experiment_plan
+    id: validation_plan
     attributes:
-      label: Experiment plan
-      description: Complete each section to define a reproducible comparison with the parent architecture.
+      label: Validation plan
+      description: Explain how the proposal will be compared and judged.
       value: |
         **Baseline**
 
-        <!-- Identify the baseline configuration and commit. -->
+        <!-- Identify the comparison architecture or configuration. -->
 
-        **Model scale**
+        **Evaluation and metrics**
 
-        <!-- Specify model size and any scaling assumptions. -->
+        <!-- Describe what will be measured and how. -->
 
-        **Training data and token budget**
-
-        <!-- Describe datasets, sampling, preprocessing, and total tokens. -->
-
-        **Training configuration**
-
-        <!-- List the relevant hyperparameters and training setup. -->
-
-        **Evaluation datasets and metrics**
-
-        <!-- Define what will be measured and how. -->
-
-        **Compute budget**
-
-        <!-- Estimate hardware, runtime, and total compute. -->
-
-        **Acceptance criteria**
+        **Success criteria**
 
         <!-- State the measurable result required to accept the proposal. -->
 
-        **Rejection criteria**
+        **Compute or data requirements, if known**
 
-        <!-- State the result or trade-off that would cause the proposal to be rejected. -->
+        <!-- Summarize any notable experimental requirements. -->
     validations:
       required: true
 
@@ -192,8 +124,4 @@ body:
       value: |
         ---
 
-        ## What happens next?
-
-        Repository maintainers record the decision using a `review:*` label and a structured reviewer comment.
-
-        Proposal authors must not approve their own proposals.
+        Repository maintainers record the decision using a `review:*` label and a structured reviewer comment. Proposal authors must not approve their own proposals.
