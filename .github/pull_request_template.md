@@ -6,14 +6,12 @@
 - **Proposal Issue:** #
 - **Official Model:** 
 
-## W&B Links
-> W&B links are required for every training or validation PR.
+## Report Links
+> Report links are required for every training or validation PR.
 > The links must provide reviewers with direct access to the
 > complete training history
 
-- **W&B Projects Link:**
-- **Training Run Link:**
-- **Benchmark Run Link:**
+- **Report Link:**
 
 ## Implementation Summary
 
