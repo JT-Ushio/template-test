@@ -4,7 +4,6 @@
 
 - **Architecture Name:** 
 - **Proposal Issue:** #
-- **Official Model:** 
 
 ## Report Links
 > Report links are required for every training or validation PR.
