@@ -3,12 +3,6 @@ name: Notify InternSpace
 on:
   issues:
     types:
-      - opened
-      - edited
-      - deleted
-      - transferred
-      - closed
-      - reopened
       - labeled
       - unlabeled
   # Use the base repository's default-branch workflow so notifications also
@@ -16,20 +10,8 @@ on:
   # executes pull-request code.
   pull_request_target:
     types:
-      - opened
-      - edited
-      - synchronize
-      - closed
-      - reopened
       - labeled
       - unlabeled
-      - converted_to_draft
-      - ready_for_review
-  pull_request_review:
-    types:
-      - submitted
-      - edited
-      - dismissed
   workflow_dispatch:
 
 permissions:
