@@ -3,7 +3,7 @@
 ## Basic information
 
 - **Architecture Name:** 
-- **Proposal Issue:**
+- **Proposal Issue:** #
 - **Official Model:** 
 
 ## W&B Links
@@ -45,3 +45,7 @@
 - [x] Public W&B logs and benchmark results are linked.
 - [x] Tests, documentation, and CI pass.
 - [x] Required reviewers approve the PR.
+
+> The lifecycle check requires the linked proposal Issue to carry
+> `architecture proposal` + `in-progress`. Merging this PR automatically moves
+> that Issue to `done` and closes it.
