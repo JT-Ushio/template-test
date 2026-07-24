@@ -1,0 +1,84 @@
+name: Notify InternSpace
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+      - deleted
+      - transferred
+      - closed
+      - reopened
+      - labeled
+      - unlabeled
+  # Use the base repository's default-branch workflow so notifications also
+  # work for pull requests opened from forks. This job never checks out or
+  # executes pull-request code.
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - closed
+      - reopened
+      - labeled
+      - unlabeled
+      - converted_to_draft
+      - ready_for_review
+  pull_request_review:
+    types:
+      - submitted
+      - edited
+      - dismissed
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    name: Dispatch snapshot refresh
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require destination credential
+        env:
+          INTERNSPACE_DISPATCH_TOKEN: ${{ secrets.INTERNSPACE_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$INTERNSPACE_DISPATCH_TOKEN" ]; then
+            echo "::error::Repository secret INTERNSPACE_DISPATCH_TOKEN is not configured."
+            exit 1
+          fi
+
+      - name: Notify InternSpace
+        env:
+          GH_TOKEN: ${{ secrets.INTERNSPACE_DISPATCH_TOKEN }}
+          SOURCE_EVENT: ${{ github.event_name }}
+          SOURCE_ACTION: ${{ github.event.action || 'manual' }}
+          SOURCE_NUMBER: ${{ github.event.issue.number || github.event.pull_request.number || 0 }}
+          SOURCE_RUN_ID: ${{ github.run_id }}
+        run: |
+          payload="$(
+            jq -n \
+              --arg event "$SOURCE_EVENT" \
+              --arg action "$SOURCE_ACTION" \
+              --arg number "$SOURCE_NUMBER" \
+              --arg run_id "$SOURCE_RUN_ID" \
+              '{
+                event_type: "template-test-changed",
+                client_payload: {
+                  source_repository: "JT-Ushio/template-test",
+                  event: $event,
+                  action: $action,
+                  number: $number,
+                  source_run_id: $run_id
+                }
+              }'
+          )"
+
+          curl --fail-with-body --silent --show-error \
+            --request POST \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer $GH_TOKEN" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/Feanus/archspace/dispatches \
+            --data "$payload"
